@@ -1,0 +1,9 @@
+{
+  "name": "yun-hu-pai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "云胡牌 · 手机里的满番爽局（纯静态预览版）",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
