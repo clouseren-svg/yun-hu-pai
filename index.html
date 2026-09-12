@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0d2b20">
+<title>云胡牌 · 手机里的满番爽局</title>
+<meta name="description" content="云胡牌——在手机上过一把胡大牌的瘾。纯属娱乐，不赌一分钱。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 桌面端：手机壳边框；移动端：铺满全屏 -->
+<div class="device" id="device">
+  <div class="device-notch" aria-hidden="true"></div>
+  <div class="app" id="app">
+
+    <!-- ═══════════ 阶段一 · 开机屏 ═══════════ -->
+    <section class="stage stage-boot is-active" id="stage-boot">
+      <div class="boot-lamp" aria-hidden="true"></div>
+      <div class="boot-inner">
+        <div class="neon-sign" aria-label="云胡牌">
+          <span class="neon-char" style="--d:0s">云</span><span class="neon-char neon-char-alt" style="--d:.9s">胡</span><span class="neon-char" style="--d:1.7s">牌</span>
+        </div>
+        <p class="boot-sub">手机里的满番爽局</p>
+        <div class="boot-deco" aria-hidden="true">
+          <span class="deco-tile">中</span><span class="deco-dot">·</span><span class="deco-tile">發</span><span class="deco-dot">·</span><span class="deco-tile">白</span>
+        </div>
+        <button class="btn btn-start" id="btn-start" type="button">开&nbsp;局</button>
+      </div>
+      <p class="boot-footer">纯属娱乐 · 不赌一分钱</p>
+    </section>
+
+    <!-- ═══════════ 阶段二 · 选番型 ═══════════ -->
+    <section class="stage stage-select" id="stage-select">
+      <header class="select-head">
+        <h2 class="select-title">今日想胡哪一手？</h2>
+        <p class="select-sub">挑一副大牌，上桌见真章</p>
+      </header>
+      <div class="fan-list" id="fan-list"><!-- 番型卡片由 JS 渲染 --></div>
+      <div class="select-foot">
+        <button class="btn btn-table" id="btn-to-table" type="button" disabled>上&nbsp;桌</button>
+      </div>
+    </section>
+
+    <!-- ═══════════ 阶段三 · 牌桌 ═══════════ -->
+    <section class="stage stage-table" id="stage-table">
+      <!-- 顶部场景条 -->
+      <header class="table-top">
+        <div class="opponents">
+          <div class="opp"><span class="opp-face">上</span><span class="opp-name">上家</span></div>
+          <div class="opp"><span class="opp-face">对</span><span class="opp-name">对家</span></div>
+          <div class="opp"><span class="opp-face">下</span><span class="opp-name">下家</span></div>
+        </div>
+        <div class="table-mid">
+          <span class="wind-badge">東風圈</span>
+          <div class="dice" id="dice" title="掷骰子">
+            <span class="die" id="die-1"><i></i></span>
+            <span class="die" id="die-2"><i></i></span>
+          </div>
+        </div>
+        <div class="fan-chip" id="fan-chip">—</div>
+      </header>
+
+      <!-- 中部：牌墙 + 弃牌河 -->
+      <div class="table-center">
+        <div class="wall-wrap">
+          <div class="wall" id="wall" role="button" tabindex="0" aria-label="摸牌">
+            <!-- 牌墙牌背由 JS 渲染 -->
+          </div>
+          <p class="wall-tip" id="wall-tip">点牌墙 · 摸牌</p>
+        </div>
+        <div class="river" id="river" aria-label="弃牌河"></div>
+        <div class="ting-banner" id="ting-banner" aria-live="polite"></div>
+      </div>
+
+      <!-- 底部：手牌区 -->
+      <div class="table-bottom">
+        <div class="hu-row">
+          <button class="btn-mic" id="btn-mic" type="button" aria-pressed="false">
+            <span class="mic-dot" aria-hidden="true"></span><span id="mic-label">喊胡</span>
+          </button>
+          <button class="btn-hu" id="btn-hu" type="button" disabled>胡!</button>
+          <div class="mic-meter" id="mic-meter" hidden><i id="mic-meter-fill"></i></div>
+        </div>
+        <div class="hand-rail">
+          <div class="hand" id="hand"><!-- 手牌由 JS 渲染 --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 阶段四 · 胡牌演出 + 结算 ═══════════ -->
+    <section class="stage stage-win" id="stage-win">
+      <div class="win-glow" aria-hidden="true"></div>
+      <div class="win-slam" id="win-slam"><!-- 关键牌拍桌 --></div>
+      <div class="win-char" id="win-char">胡!</div>
+      <div class="win-banner" id="win-banner"><span id="win-banner-text">国士无双</span></div>
+      <div class="win-counter">
+        <div class="fan-roll"><span id="fan-num">0</span><span class="fan-unit">番</span></div>
+        <p class="win-score" id="win-score">三家通吃 · 入账 0 分</p>
+      </div>
+      <p class="win-quip" id="win-quip">自摸！三家通吃</p>
+      <div class="win-actions">
+        <button class="btn btn-again" id="btn-again" type="button">再来一局</button>
+        <button class="btn btn-ghost" id="btn-switch" type="button">换个番型</button>
+        <button class="btn btn-ghost" id="btn-share" type="button">炫耀一下</button>
+      </div>
+    </section>
+
+    <!-- 全局层：粒子画布 / 静音 / toast -->
+    <canvas class="fx-canvas" id="fx-canvas"></canvas>
+    <button class="mute-btn" id="btn-mute" type="button" aria-label="静音开关" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path class="spk" d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/>
+        <path class="spk-on" d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path class="spk-off" d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="toast" id="toast" role="status"></div>
+
+  </div>
+</div>
+
+<script src="audio.js"></script>
+<script src="tiles.js"></script>
+<script src="particles.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
