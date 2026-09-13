@@ -166,7 +166,44 @@
     },
 
     /** 选中卡片的轻叩 */
-    select() { this.tick(1.1, 0.6); }
+    select() { this.tick(1.1, 0.6); },
+
+    /** 洗牌哗啦：一串快速碎响 */
+    shuffle() {
+      if (!this.ready) return;
+      for (let i = 0; i < 7; i++) {
+        setTimeout(() => this.tick(0.9 + Math.random() * 0.9, 0.35), i * 55 + Math.random() * 25);
+      }
+    },
+
+    /** 吃/碰：双声短脆响；杠：低沉三响 */
+    meld(type) {
+      if (!this.ready) return;
+      if (type === 'kong' || type === 'ankong') {
+        [0, 110, 220].forEach((d, i) => setTimeout(() => this.tick(0.7 - i * 0.08, 0.9), d));
+      } else {
+        this.tick(1.3, 0.8);
+        setTimeout(() => this.tick(1.55, 0.7), 95);
+      }
+    },
+
+    /** 新一局开场铃：清亮一声 */
+    roundBell() {
+      if (!this.ready) return;
+      const t = this.ctx.currentTime;
+      [1318.5, 1975.5].forEach((f, i) => {
+        const o = this.ctx.createOscillator();
+        const g = this.ctx.createGain();
+        o.type = 'sine'; o.frequency.value = f;
+        g.gain.setValueAtTime(0.12 / (i + 1), t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+        o.connect(g).connect(this.master);
+        o.start(t); o.stop(t + 1);
+      });
+    },
+
+    /** 轮到自家摸打的轻提示 */
+    turn() { this.tick(1.4, 0.4); }
   };
 
   window.AudioFX = AudioFX;

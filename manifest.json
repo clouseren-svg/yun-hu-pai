@@ -1,0 +1,16 @@
+{
+  "name": "云胡牌 · 手机里的满番爽局",
+  "short_name": "云胡牌",
+  "description": "真规则四人麻将小网页：吃碰杠、抢杠胡、杠上开花，清一色到国士无双逐项计番。纯属娱乐，不赌一分钱。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0d2b20",
+  "background_color": "#0d2b20",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

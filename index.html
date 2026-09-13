@@ -4,8 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0d2b20">
-<title>云胡牌 · 手机里的满番爽局</title>
-<meta name="description" content="云胡牌——在手机上过一把胡大牌的瘾。纯属娱乐，不赌一分钱。">
+<title>云胡牌 · 手机里的满番爽局 | 免费在线四人麻将</title>
+<meta name="description" content="云胡牌——在手机上过一把胡大牌的瘾。真规则四人麻将：吃碰杠、抢杠胡、杠上开花，清一色到国士无双 17 种番型逐项计番。纯属娱乐，不赌一分钱。">
+<meta name="keywords" content="麻将,在线麻将,四人麻将,云胡牌,国标麻将,推倒胡,清一色,国士无双,免费麻将小游戏">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="云胡牌">
+<meta property="og:type" content="website">
+<meta property="og:title" content="云胡牌 · 手机里的满番爽局">
+<meta property="og:description" content="真规则四人麻将小网页：吃碰杠齐全，大牌特效拉满。纯属娱乐，不赌一分钱。">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="云胡牌 · 手机里的满番爽局">
+<meta name="twitter:description" content="真规则四人麻将小网页：吃碰杠齐全，大牌特效拉满。纯属娱乐，不赌一分钱。">
+<meta name="twitter:image" content="og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
@@ -31,84 +46,188 @@
         </div>
         <button class="btn btn-start" id="btn-start" type="button">开&nbsp;局</button>
       </div>
-      <p class="boot-footer">纯属娱乐 · 不赌一分钱</p>
+      <p class="boot-footer">真规则四人局 · 纯属娱乐 · 不赌一分钱</p>
     </section>
 
-    <!-- ═══════════ 阶段二 · 选番型 ═══════════ -->
-    <section class="stage stage-select" id="stage-select">
+    <!-- ═══════════ 阶段二 · 模式选择 ═══════════ -->
+    <section class="stage stage-mode" id="stage-mode">
       <header class="select-head">
-        <h2 class="select-title">今日想胡哪一手？</h2>
-        <p class="select-sub">挑一副大牌，上桌见真章</p>
+        <h2 class="select-title">挑个场子</h2>
+        <p class="select-sub">东风圈 · 四局一场 · 三家 AI 陪练</p>
       </header>
-      <div class="fan-list" id="fan-list"><!-- 番型卡片由 JS 渲染 --></div>
-      <div class="select-foot">
-        <button class="btn btn-table" id="btn-to-table" type="button" disabled>上&nbsp;桌</button>
+      <div class="mode-list">
+        <button class="mode-card" id="mode-rookie" type="button">
+          <span class="mode-badge">推荐</span>
+          <span class="mode-name">推倒胡 · 新手场</span>
+          <span class="mode-desc">能胡就胡，不设门槛<br>推荐出牌金光提示 · 听牌横幅报听</span>
+        </button>
+        <button class="mode-card mode-pro" id="mode-pro" type="button">
+          <span class="mode-name">计番场 · 老雀友</span>
+          <span class="mode-desc">八番起胡，全凭本事<br>无提示 · 无辅助 · 牌品即人品</span>
+        </button>
+      </div>
+      <p class="mode-foot">东风圈打满四局，按总账排座次</p>
+    </section>
+
+    <!-- ═══════════ 阶段三 · 新手引导（首次进入新手场） ═══════════ -->
+    <section class="stage stage-tutorial" id="stage-tutorial">
+      <div class="tut-pages" id="tut-pages">
+        <div class="tut-page">
+          <h3 class="tut-title">摸牌 · 出牌</h3>
+          <div class="tut-demo" data-demo="draw">
+            <div class="tut-wall"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="tut-hand-demo">
+              <span class="mini-tile">二<br>萬</span><span class="mini-tile">三<br>萬</span><span class="mini-tile hl">四<br>萬</span>
+            </div>
+          </div>
+          <p class="tut-text">轮到你时自动摸牌。<br><b>点一下</b>手牌选中（牌会抬起），<b>再点一下</b>或<b>双击/上滑</b>打出。<br>金光罩着的牌是推荐打法。</p>
+        </div>
+        <div class="tut-page">
+          <h3 class="tut-title">吃 · 碰 · 杠</h3>
+          <div class="tut-demo">
+            <div class="tut-claim-demo">
+              <span class="claim-sample">吃</span><span class="claim-sample">碰</span><span class="claim-sample">杠</span><span class="claim-sample dim">过</span>
+            </div>
+          </div>
+          <p class="tut-text">别人打出的牌你能用上时，会弹出声明按钮：<br><b>吃</b>只能吃上家的，<b>碰</b>要手里有一对，<b>杠</b>要三张。<br>五秒不点就自动放弃。胡牌优先于一切。</p>
+        </div>
+        <div class="tut-page">
+          <h3 class="tut-title">胡牌 · 计番</h3>
+          <div class="tut-demo">
+            <div class="tut-hu-demo">胡!</div>
+          </div>
+          <p class="tut-text">牌型凑齐「四副+一将」就能胡，番型越大得分越狠：<br>清一色 24 番 · 国士无双 88 番，自摸三家通赔。<br>听牌时金横幅会告诉你听哪几张。</p>
+        </div>
+      </div>
+      <div class="tut-nav">
+        <div class="tut-dots" id="tut-dots"><i class="on"></i><i></i><i></i></div>
+        <div class="tut-btns">
+          <button class="btn btn-ghost" id="tut-skip" type="button">跳过</button>
+          <button class="btn btn-again" id="tut-next" type="button">下一条</button>
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════ 阶段三 · 牌桌 ═══════════ -->
+    <!-- ═══════════ 阶段四 · 牌桌 ═══════════ -->
     <section class="stage stage-table" id="stage-table">
-      <!-- 顶部场景条 -->
       <header class="table-top">
-        <div class="opponents">
-          <div class="opp"><span class="opp-face">上</span><span class="opp-name">上家</span></div>
-          <div class="opp"><span class="opp-face">对</span><span class="opp-name">对家</span></div>
-          <div class="opp"><span class="opp-face">下</span><span class="opp-name">下家</span></div>
+        <span class="chip" id="mode-chip">新手场</span>
+        <div class="round-info">
+          <span id="round-label">東風圈 · 東一局</span>
+          <span id="wall-label">牌墙 --</span>
         </div>
-        <div class="table-mid">
-          <span class="wind-badge">東風圈</span>
-          <div class="dice" id="dice" title="掷骰子">
-            <span class="die" id="die-1"><i></i></span>
-            <span class="die" id="die-2"><i></i></span>
-          </div>
-        </div>
-        <div class="fan-chip" id="fan-chip">—</div>
+        <span class="chip chip-score" id="my-score">0</span>
       </header>
 
-      <!-- 中部：牌墙 + 弃牌河 -->
-      <div class="table-center">
-        <div class="wall-wrap">
-          <div class="wall" id="wall" role="button" tabindex="0" aria-label="摸牌">
-            <!-- 牌墙牌背由 JS 渲染 -->
+      <div class="table-felt">
+        <!-- 对家（上） -->
+        <div class="seat seat-top" id="seat-2">
+          <div class="seat-info">
+            <span class="avatar">对</span>
+            <span class="seat-name">龙五</span>
+            <span class="seat-score">0</span>
+            <span class="dealer-mark">庄</span>
           </div>
-          <p class="wall-tip" id="wall-tip">点牌墙 · 摸牌</p>
+          <div class="backs backs-h"></div>
+          <div class="melds melds-h"></div>
         </div>
-        <div class="river" id="river" aria-label="弃牌河"></div>
-        <div class="ting-banner" id="ting-banner" aria-live="polite"></div>
+        <div class="felt-mid">
+          <!-- 上家（左） -->
+          <div class="seat seat-left" id="seat-3">
+            <div class="seat-info">
+              <span class="avatar">上</span>
+              <span class="seat-name">霞姨</span>
+              <span class="seat-score">0</span>
+              <span class="dealer-mark">庄</span>
+            </div>
+            <div class="backs backs-v"></div>
+            <div class="melds melds-v"></div>
+          </div>
+          <!-- 桌心 -->
+          <div class="table-center">
+            <div class="river-pile river-top" id="river-2"></div>
+            <div class="river-mid">
+              <div class="river-pile river-left" id="river-3"></div>
+              <div class="compass" id="compass"><b id="compass-wind">東</b><span id="compass-sub">一局</span></div>
+              <div class="river-pile river-right" id="river-1"></div>
+            </div>
+            <div class="river-pile river-bottom" id="river-0"></div>
+          </div>
+          <!-- 下家（右） -->
+          <div class="seat seat-right" id="seat-1">
+            <div class="seat-info">
+              <span class="avatar">下</span>
+              <span class="seat-name">阿柴</span>
+              <span class="seat-score">0</span>
+              <span class="dealer-mark">庄</span>
+            </div>
+            <div class="backs backs-v"></div>
+            <div class="melds melds-v"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- 底部：手牌区 -->
+      <!-- 听牌横幅 -->
+      <div class="ting-banner" id="ting-banner"></div>
+
+      <!-- 声明按钮组（他人弃牌时） -->
+      <div class="claim-bar" id="claim-bar" hidden>
+        <div class="claim-timer"><i id="claim-timer-fill"></i></div>
+        <div class="claim-btns" id="claim-btns"></div>
+      </div>
+      <!-- 自家动作（自摸/杠） -->
+      <div class="self-bar" id="self-bar" hidden></div>
+
       <div class="table-bottom">
-        <div class="hu-row">
+        <div class="my-row">
+          <div class="my-melds" id="my-melds"></div>
+          <div class="hand" id="hand"></div>
+        </div>
+        <div class="bottom-bar">
           <button class="btn-mic" id="btn-mic" type="button" aria-pressed="false">
             <span class="mic-dot" aria-hidden="true"></span><span id="mic-label">喊胡</span>
           </button>
-          <button class="btn-hu" id="btn-hu" type="button" disabled>胡!</button>
-          <div class="mic-meter" id="mic-meter" hidden><i id="mic-meter-fill"></i></div>
-        </div>
-        <div class="hand-rail">
-          <div class="hand" id="hand"><!-- 手牌由 JS 渲染 --></div>
+          <p class="hand-tip" id="hand-tip">摸牌中…</p>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ 阶段四 · 胡牌演出 + 结算 ═══════════ -->
+    <!-- ═══════════ 阶段五 · 胡牌演出 + 单局结算 ═══════════ -->
     <section class="stage stage-win" id="stage-win">
       <div class="win-glow" aria-hidden="true"></div>
-      <div class="win-slam" id="win-slam"><!-- 关键牌拍桌 --></div>
+      <div class="win-slam" id="win-slam"></div>
       <div class="win-char" id="win-char">胡!</div>
-      <div class="win-banner" id="win-banner"><span id="win-banner-text">国士无双</span></div>
-      <div class="win-counter">
-        <div class="fan-roll"><span id="fan-num">0</span><span class="fan-unit">番</span></div>
-        <p class="win-score" id="win-score">三家通吃 · 入账 0 分</p>
+      <div class="win-banner" id="win-banner"><span id="win-banner-text">自摸</span></div>
+      <div class="win-panel" id="win-panel">
+        <ul class="fan-breakdown" id="fan-breakdown"></ul>
+        <div class="win-counter">
+          <div class="fan-roll"><span id="fan-num">0</span><span class="fan-unit">番</span></div>
+          <p class="fan-cap-note" id="fan-cap-note" hidden>满贯 · 按 88 番计分</p>
+          <p class="win-score" id="win-score"></p>
+        </div>
+        <ul class="win-transfers" id="win-transfers"></ul>
       </div>
-      <p class="win-quip" id="win-quip">自摸！三家通吃</p>
       <div class="win-actions">
-        <button class="btn btn-again" id="btn-again" type="button">再来一局</button>
-        <button class="btn btn-ghost" id="btn-switch" type="button">换个番型</button>
-        <button class="btn btn-ghost" id="btn-share" type="button">炫耀一下</button>
+        <button class="btn btn-again" id="btn-next-round" type="button">下一局</button>
       </div>
     </section>
+
+    <!-- ═══════════ 阶段六 · 整场总结算 ═══════════ -->
+    <section class="stage stage-match" id="stage-match">
+      <h2 class="match-title">东风圈 · 终场</h2>
+      <p class="match-sub" id="match-champion">霞姨 技压群雄</p>
+      <div class="match-list" id="match-list"></div>
+      <div class="win-actions">
+        <button class="btn btn-again" id="btn-rematch" type="button">再来一场</button>
+        <button class="btn btn-ghost" id="btn-menu" type="button">回主菜单</button>
+      </div>
+    </section>
+
+    <!-- 流局提示 -->
+    <div class="draw-overlay" id="draw-overlay" hidden>
+      <div class="draw-char">荒庄</div>
+      <p>牌墙摸尽 · 本场重来</p>
+    </div>
 
     <!-- 全局层：粒子画布 / 静音 / toast -->
     <canvas class="fx-canvas" id="fx-canvas"></canvas>
@@ -124,6 +243,9 @@
   </div>
 </div>
 
+<script src="engine.js"></script>
+<script src="ai.js"></script>
+<script src="game.js"></script>
 <script src="audio.js"></script>
 <script src="tiles.js"></script>
 <script src="particles.js"></script>
